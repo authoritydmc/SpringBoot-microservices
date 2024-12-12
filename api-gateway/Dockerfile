@@ -1,4 +1,4 @@
-FROM openjdk:11 AS build
+FROM openjdk:17 AS build
 
 WORKDIR /app
 
@@ -10,8 +10,8 @@ RUN ./mvnw dependency:resolve
 COPY src src
 RUN ./mvnw package -Dmaven.test.skip
 
-# For Java 11,
-FROM adoptopenjdk/openjdk11:alpine-jre
+# For Java 17,
+FROM adoptopenjdk/openjdk17:alpine-jre
 
 WORKDIR /apigateway
 
